@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import ActionBtn from "./components/ActionBtn";
 import UserListContainer from "./components/UserListContainer";
 import { initialUsers } from "./data/initialUsers";
 import { currentDateAndTime, currentDate } from "./utils/dateTime";
@@ -16,8 +17,10 @@ export default function App() {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userData, setUserData] = useState(initialUsers);
-  const [showRegisterForm, setShowRegisterForm] = useState(true);
-  const [showLoginForm, setShowLoginForm] = useState(false);
+
+  //toggle state
+
+  const [toggleForm, setToggleForm] = useState(true);
   const [showRegisteredUser, setShowRegisteredUser] = useState(false);
   const [showActiveUser, setShowActiveUser] = useState(false);
   const activeUsers = userData.filter((user) => user.loginStatus === true);
@@ -38,7 +41,7 @@ export default function App() {
         loginTime: null,
       },
     ]);
-    setShowRegisterForm(false);
+
     setEmail("");
     setFullName("");
     setPassword("");
@@ -66,58 +69,38 @@ export default function App() {
       console.log("❌ No user found with these credentials");
     }
     // reset login data
-    setShowLoginForm(false);
     setUserEmail("");
     setUserPassword("");
   };
 
   return (
     <>
-      <main className="w-full min-h-screen   bg-[#fbf1de] flex justify-center items-center flex-col p-10 ">
+      <main className="w-full min-h-screen flex justify-center items-center flex-col p-10 ">
         <h1 className="text-black text-4xl">Track My Users</h1>
         <p>Manage users effortlessly — from sign-up to sign-out.</p>
         {/* Action Button */}
-        <div className="flex my-6 justify-center items-center flex-row gap-10">
-          <button
-            type="button"
-            onClick={() => {
-              setShowRegisterForm(!showRegisterForm);
-              setShowLoginForm(false);
-            }}
-            className="px-4 py-2 bg-amber-500 text-white rounded-2xl cursor-pointer active:scale-[90%] transition-all ease-in duration-100"
-          >
-            New user
-          </button>
-          <button
-            className="px-4 py-2 bg-amber-500 text-white rounded-2xl cursor-pointer active:scale-[90%] transition-all ease-in duration-100"
-            onClick={() => {
-              setShowLoginForm(!showLoginForm);
-              setShowRegisterForm(false);
-            }}
-          >
-            Log In
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowRegisteredUser(!showRegisteredUser)}
-            className="px-4 py-2 bg-amber-500 text-white rounded-2xl cursor-pointer active:scale-[90%] transition-all ease-in duration-100"
-          >
-            View all registered users
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowActiveUser(!showActiveUser)}
-            className="px-4 py-2 bg-amber-500 text-white rounded-2xl cursor-pointer active:scale-[90%] transition-all ease-in duration-100"
-          >
-            Show active users
-          </button>
-        </div>
+        <ActionBtn
+          showActiveUser={showActiveUser}
+          onSetShowActiveUser={setShowActiveUser}
+          showRegisteredUser={showRegisteredUser}
+          onSetShowRegisteredUser={setShowRegisteredUser}
+        />
 
         <div className="w-full flex justify-center items-center flex-col gap-20">
           {/* Register and login section */}
-          <div className="w-full flex justify-center items-center flex-row flex-wrap gap-10">
+          <div className="w-full flex justify-center items-center">
             {/* User Registration form container */}
-            {showRegisterForm && (
+            {toggleForm ? (
+              <Login
+                userEmail={userEmail}
+                userPassword={userPassword}
+                onSetUserEmail={setUserEmail}
+                onSetUserPassword={setUserPassword}
+                onLogin={handleLogin}
+                onSetToggleForm={setToggleForm}
+                toggleForm={toggleForm}
+              />
+            ) : (
               <Register
                 fullName={fullName}
                 email={email}
@@ -128,20 +111,12 @@ export default function App() {
                 onSetPassword={setPassword}
                 onSetImage={setImage}
                 onRegisterFormSubmit={handleRegister}
-              />
-            )}
-            {showLoginForm && (
-              <Login
-                userEmail={userEmail}
-                userPassword={userPassword}
-                onSetUserEmail={setUserEmail}
-                onSetUserPassword={setUserPassword}
-                onLogin={handleLogin}
-                setShowRegister={setShowRegisterForm}
-                registerForm={showRegisterForm}
+                onSetToggleForm={setToggleForm}
+                toggleForm={toggleForm}
               />
             )}
           </div>
+
           {/* All registered and active user section */}
           <div className="w-full h-fit flex justify-between items-start flex-row flex-wrap gap-10">
             <UserListContainer
