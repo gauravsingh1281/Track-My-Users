@@ -21,7 +21,7 @@ export default function Register({
           alt="signup-illustration"
         />
         <div className="w-[40%] h-full bg-white px-6 py-4 flex flex-col justify-center items-center gap-3 ">
-          <h2 className="text-2xl">Let's get started!</h2>
+          <h2 className="text-2xl  text-[#2C444E]">Let's get started!</h2>
           <form className="w-full" onSubmit={onRegisterFormSubmit}>
             <label className="block text-base ">Full name :</label>
             <input
@@ -60,7 +60,7 @@ export default function Register({
             />
             <button
               type="submit"
-              className="w-full bg-[#2A454E] my-3 text-white py-2 rounded-lg cursor-pointer"
+              className="w-full bg-[#2A454E] my-3 text-white py-2 rounded-lg cursor-pointer active:scale-[90%]  transition-all ease-in duration-100"
             >
               Sign Up
             </button>

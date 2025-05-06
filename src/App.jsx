@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import ActionBtn from "./components/ActionBtn";
@@ -76,8 +77,7 @@ export default function App() {
   return (
     <>
       <main className="w-full min-h-screen flex justify-center items-center flex-col p-10 ">
-        <h1 className="text-black text-4xl">Track My Users</h1>
-        <p>Manage users effortlessly — from sign-up to sign-out.</p>
+        <Header />
         {/* Action Button */}
         <ActionBtn
           showActiveUser={showActiveUser}

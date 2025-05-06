@@ -17,7 +17,7 @@ export default function login({
           alt="login-illustration"
         />
         <div className="w-full lg:w-[40%] h-full  bg-white px-6 py-4 flex flex-col justify-center items-center gap-2">
-          <h2 className="text-3xl mb-3">Welcome back!</h2>
+          <h2 className="text-3xl mb-3 text-[#2C444E]">Welcome back!</h2>
 
           <form className="w-full" onSubmit={onLogin}>
             <label className="block text-base ">Email :</label>
@@ -41,7 +41,7 @@ export default function login({
 
             <button
               type="submit"
-              className="w-full bg-[#2C444E] my-3 text-white py-2 rounded-lg cursor-pointer"
+              className="w-full bg-[#2C444E] my-3 text-white py-2 rounded-lg cursor-pointer active:scale-[90%]  transition-all ease-in duration-100"
             >
               Log In
             </button>
