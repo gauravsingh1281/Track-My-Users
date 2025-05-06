@@ -13,7 +13,11 @@ export default function UserListContainer({
           <div className="w-full ">
             <ul>
               {userData.map((data) => (
-                <UserList userData={data} listMode={listMode} />
+                <UserList
+                  userData={data}
+                  listMode={listMode}
+                  key={data.userId}
+                />
               ))}
             </ul>
           </div>

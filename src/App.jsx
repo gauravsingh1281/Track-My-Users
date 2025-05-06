@@ -2,61 +2,8 @@ import { useState } from "react";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import UserListContainer from "./components/UserListContainer";
-
-const formatShortMonthDateTimeIST = () => {
-  const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-  const date = new Date(now);
-
-  const day = date.getDate();
-  const monthShort = date.toLocaleString("en-IN", {
-    month: "short",
-    timeZone: "Asia/Kolkata",
-  });
-  const year = date.getFullYear();
-
-  let hours = date.getHours();
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12 || 12;
-
-  return `${day} ${monthShort} ${year}, ${String(hours).padStart(
-    2,
-    "0"
-  )}:${minutes} ${ampm}`;
-};
-
-const initialUserData = [
-  {
-    userId: 1,
-    userFullName: "Gaurav Pratap Singh",
-    userEmail: "gaurav@reactuser.com",
-    userPassword: "demo",
-    userImage: "https://avatars.githubusercontent.com/u/85905403?v=4",
-    loginStatus: true,
-    joinedOn: "13 April 2023",
-    loginTime: null,
-  },
-  {
-    userId: 2,
-    userFullName: "Priya Mehta",
-    userEmail: "priya.mehta@example.com",
-    userPassword: "secure456",
-    userImage: "https://i.pravatar.cc/50?u=2",
-    loginStatus: false,
-    joinedOn: "2 October 2024",
-    loginTime: null,
-  },
-  {
-    userId: 3,
-    userFullName: "Rahul Verma",
-    userEmail: "rahul.verma@example.com",
-    userPassword: "welcome789",
-    userImage: "https://i.pravatar.cc/50?u=3",
-    loginStatus: false,
-    joinedOn: "23 January 2025",
-    loginTime: null,
-  },
-];
+import { initialUsers } from "./data/initialUsers";
+import { currentDateAndTime, currentDate } from "./utils/dateTime";
 
 export default function App() {
   // User Registeration State
@@ -68,7 +15,7 @@ export default function App() {
   //User login State
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [userData, setUserData] = useState(initialUserData);
+  const [userData, setUserData] = useState(initialUsers);
   const [showRegisterForm, setShowRegisterForm] = useState(true);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegisteredUser, setShowRegisteredUser] = useState(false);
@@ -87,7 +34,7 @@ export default function App() {
         userPassword: password,
         userImage: `${image}?u=${id}`,
         loginStatus: false,
-        joinedOn: formatShortMonthDateTimeIST(),
+        joinedOn: currentDate(),
         loginTime: null,
       },
     ]);
@@ -109,7 +56,7 @@ export default function App() {
             ? {
                 ...user,
                 loginStatus: true,
-                loginTime: formatShortMonthDateTimeIST(),
+                loginTime: currentDateAndTime(),
               }
             : user
         )

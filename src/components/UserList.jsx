@@ -1,10 +1,7 @@
 export default function UserList({ userData, listMode }) {
   return (
     <>
-      <li
-        key={userData.userId}
-        className=" bg-white flex justify-between items-center flex-row p-2 rounded-lg shadow-xl relative my-5"
-      >
+      <li className=" bg-white flex justify-between items-center flex-row p-2 rounded-lg shadow-xl relative my-5">
         <div className="w-20  overflow-hidden rounded-full">
           <img
             src={userData.userImage}
