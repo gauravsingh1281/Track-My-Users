@@ -1,3 +1,5 @@
+import { formatLoginTime, formatJoinedDate } from "../utils/formatDateTime";
+
 export default function UserList({ userData, listMode }) {
   return (
     <>
@@ -14,18 +16,24 @@ export default function UserList({ userData, listMode }) {
         )}
         <div className="flex flex-col justify-center items-center w-full px-2 gap-2">
           <h3>{userData.userFullName}</h3>
-          <div className="flex justify-between items-center w-full">
+          <div className="flex justify-between items-center w-full text-sm">
             <p>
               {listMode === "activeUsers"
-                ? `login at ${userData.loginTime}`
-                : `Joined ${userData.joinedOn}`}
+                ? `Last login : ${formatLoginTime(userData.loginTime)}`
+                : `Joined ${formatJoinedDate(userData.joinedOn)}`}
             </p>
             <p>{userData.userEmail}</p>
           </div>
         </div>
-        <button className="p-2 bg-red-500 rounded-full text-sm text-white active:scale-[95%] transition-all ease-in duration-100 cursor-pointer ">
-          Delete
-        </button>
+        {listMode === "activeUsers" ? (
+          <button className="p-2 bg-lime-500 rounded-full text-sm text-black active:scale-[95%] transition-all ease-in duration-100 cursor-pointer ">
+            Logout
+          </button>
+        ) : (
+          <button className="p-2 bg-red-500 rounded-full text-sm text-white active:scale-[95%] transition-all ease-in duration-100 cursor-pointer ">
+            Delete
+          </button>
+        )}
       </li>
     </>
   );
