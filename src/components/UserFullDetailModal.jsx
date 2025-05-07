@@ -76,11 +76,11 @@ export default function UserFullDetailModal({ selectedUser, onClose }) {
         {isLoginHistoryVisible &&
         selectedUser.loginHistory &&
         selectedUser.loginHistory.length > 0 ? (
-          <div className="text-left w-full mt-4">
-            <ul className="text-sm text-gray-600 max-h-32 flex justify-center items-center flex-row wrap">
+          <div className="text-left w-full mt-5">
+            <ul className="text-sm text-gray-600 max-h-32 flex justify-start items-center flex-row flex-wrap gap-4">
               {selectedUser.loginHistory.map((time, index) => (
                 <li key={index}>
-                  <span className="bg-gray-200 text-black mr-3 px-1 py-1 rounded-md">
+                  <span className="bg-gray-200 text-black  px-1 py-1 rounded-md">
                     {formatLoginTime(time)}
                   </span>
                 </li>

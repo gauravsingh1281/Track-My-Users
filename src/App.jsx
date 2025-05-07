@@ -62,6 +62,7 @@ export default function App() {
     setEmail("");
     setFullName("");
     setPassword("");
+    toast.success("User registered successfully.");
   };
   const handleLogin = (e) => {
     e.preventDefault();
@@ -78,14 +79,16 @@ export default function App() {
                 ...user,
                 loginStatus: true,
                 loginTime: timeStamp,
-                loginHistory: [...(user.loginHistory || []), timeStamp],
+                loginHistory: [...(user.loginHistory || []), timeStamp]
+                  .sort((a, b) => new Date(b) - new Date(a))
+                  .slice(0, 8),
               }
             : user
         )
       );
-      console.log("✅ User logged in successfully");
+      toast.success("User logged in successfully");
     } else {
-      console.log("❌ No user found with these credentials");
+      toast.error("No user found with these credentials");
     }
 
     // Reset login data
@@ -160,6 +163,7 @@ export default function App() {
           {/* All registered and active user section */}
           <div className="w-full h-fit flex justify-between items-start lg:flex-row flex-wrap gap-10">
             {/*  Registered users*/}
+
             <UserListContainer
               listHeading={"Registered users"}
               userData={userData}
@@ -169,6 +173,7 @@ export default function App() {
               onSetSelectedUser={setSelectedUser}
               onDeleteUser={handleDeleteUser}
             />
+
             {/*  Active users*/}
             <UserListContainer
               listHeading={"Active users"}
