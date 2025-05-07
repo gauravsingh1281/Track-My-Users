@@ -11,7 +11,7 @@ export default function UserListContainer({
 }) {
   return (
     <>
-      <div className="w-[48%] p-3">
+      <div className="w-full md:w-[48%] lg:w-[48%] p-3">
         {showCard && (
           <>
             <h2 className="text-2xl text-center mb-5">{listHeading}</h2>

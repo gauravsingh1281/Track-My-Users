@@ -147,7 +147,7 @@ export default function App() {
           </div>
 
           {/* All registered and active user section */}
-          <div className="w-full h-fit flex justify-between items-start flex-row flex-wrap gap-10">
+          <div className="w-full h-fit flex justify-between items-start lg:flex-row flex-wrap gap-10">
             {/*  Registered users*/}
             <UserListContainer
               listHeading={"Registered users"}

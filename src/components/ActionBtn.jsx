@@ -6,11 +6,11 @@ export default function ActionBtn({
 }) {
   return (
     <>
-      <div className="flex my-6 justify-center items-center flex-row gap-10">
+      <div className="flex my-6 justify-center items-center flex-col sm:flex-row md:flex-row lg:flex-row gap-4 sm:gap-10 md:gap-10 lg:gap-10 w-full">
         <button
           type="button"
           onClick={() => onSetShowRegisteredUser(!showRegisteredUser)}
-          className={`px-4 py-2 ${
+          className={`px-4 py-2 font-base ${
             showRegisteredUser
               ? "text-white bg-[#2A454E]"
               : " bg-[#FFC801] text-[#2A454E]"

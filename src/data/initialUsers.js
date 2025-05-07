@@ -27,7 +27,7 @@ export const initialUsers = [
     userFullName: "Rahul Verma",
     userEmail: "rahul.verma@example.com",
     userPassword: "welcome789",
-    userImage: "https://i.pravatar.cc/50?u=3",
+    userImage: "https://i.pravatar.cc/300?u=3",
     loginStatus: false,
     joinedOn: currentDate(),
     loginTime: null,
