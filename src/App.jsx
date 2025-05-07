@@ -97,9 +97,9 @@ export default function App() {
             : user
         )
       );
-      toast.success("User logged in successfully");
+      toast.success("User logged in successfully.");
     } else {
-      toast.error("No user found with these credentials");
+      toast.error("No user found with these credentials.");
     }
 
     // Reset login data

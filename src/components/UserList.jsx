@@ -46,7 +46,7 @@ export default function UserList({
           ) : (
             <button
               onClick={() => onDeleteUser(userData.userId)}
-              className="p-2 rounded-full  hover:scale-[90%] hover:bg-[#FFC801]   transition-all ease-in duration-100 cursor-pointer "
+              className="p-2 rounded-full  hover:scale-[90%] hover:bg-[#fceebf]   transition-all ease-in duration-100 cursor-pointer "
             >
               <MdDelete className="text-red-500 font-extrabold text-xl" />
             </button>

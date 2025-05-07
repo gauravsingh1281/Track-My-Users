@@ -15,7 +15,9 @@ export default function UserListContainer({
         <>
           {userData.length > 0 ? (
             <>
-              <h2 className="text-2xl text-center mb-5">{listHeading}</h2>
+              <h2 className="text-2xl text-center mb-6 text-[#385A64] font-medium uppercase">
+                {listHeading}
+              </h2>
               <div className="w-full">
                 <ul>
                   {userData.map((data) => (
@@ -33,7 +35,7 @@ export default function UserListContainer({
               </div>
             </>
           ) : (
-            <p className="text-2xl text-center mx-auto text-red-500">
+            <p className="text-2xl text-center mx-auto text-[#FB6A55] font-medium uppercase">
               {listMode === "registeredUsers"
                 ? "No registered user found"
                 : "No active user found"}
