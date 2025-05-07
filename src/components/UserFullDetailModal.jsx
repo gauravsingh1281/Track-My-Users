@@ -1,5 +1,5 @@
 import { formatLoginTime, formatJoinedDate } from "../utils/formatDateTime";
-
+import { IoMdClose } from "react-icons/io";
 export default function UserFullDetailModal({ selectedUser, onClose }) {
   if (!selectedUser) return null;
 
@@ -7,11 +7,12 @@ export default function UserFullDetailModal({ selectedUser, onClose }) {
     <div className="fixed inset-0 backdrop-blur-sm bg-black/20 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded-xl shadow-xl w-[90%] max-w-md relative">
         <button
-          className="absolute top-2 right-2 text-xl font-bold text-gray-700 hover:text-red-500"
+          className="absolute top-2 right-2 font-bold text-black hover:text-red-500 cursor-pointer hover:scale-[90%] transition-all ease-in duration-100"
           onClick={onClose}
         >
-          &times;
+          <IoMdClose className="text-[35px]" />
         </button>
+
         <div className="flex flex-col items-center text-center gap-4">
           <img
             src={selectedUser.userImage}
