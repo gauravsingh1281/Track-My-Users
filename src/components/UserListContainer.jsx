@@ -5,6 +5,7 @@ export default function UserListContainer({
   listHeading,
   listMode,
   onDeleteUser,
+  onLogOut,
 }) {
   return (
     <>
@@ -20,6 +21,7 @@ export default function UserListContainer({
                     listMode={listMode}
                     key={data.userId}
                     onDeleteUser={onDeleteUser}
+                    onLogOut={onLogOut}
                   />
                 ))}
               </ul>

@@ -71,7 +71,7 @@ export default function App() {
       console.log("❌ No user found with these credentials");
     }
 
-    // reset login data
+    // Reset login data
     setUserEmail("");
     setUserPassword("");
   };
@@ -80,6 +80,17 @@ export default function App() {
   const handleDeleteUser = (userId) => {
     setUserData((prevUserData) =>
       prevUserData.filter((user) => user.userId !== userId)
+    );
+  };
+
+  //logout handler
+  const handleLogoutUser = (userId) => {
+    setUserData((prevUserData) =>
+      prevUserData.map((userDetails) =>
+        userDetails.userId === userId
+          ? { ...userDetails, loginStatus: false, loginTime: null }
+          : userDetails
+      )
     );
   };
   return (
@@ -127,6 +138,7 @@ export default function App() {
 
           {/* All registered and active user section */}
           <div className="w-full h-fit flex justify-between items-start flex-row flex-wrap gap-10">
+            {/*  Registered users*/}
             <UserListContainer
               listHeading={"Registered users"}
               userData={userData}
@@ -136,6 +148,7 @@ export default function App() {
               onSetSelectedUser={selectedUser}
               onDeleteUser={handleDeleteUser}
             />
+            {/*  Active users*/}
             <UserListContainer
               listHeading={"Active users"}
               userData={activeUsers}
@@ -143,6 +156,7 @@ export default function App() {
               listMode={"activeUsers"}
               selectedUser={selectedUser}
               onSetSelectedUser={selectedUser}
+              onLogOut={handleLogoutUser}
             />
           </div>
         </div>

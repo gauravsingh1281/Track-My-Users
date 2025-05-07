@@ -1,6 +1,11 @@
 import { formatLoginTime, formatJoinedDate } from "../utils/formatDateTime";
 
-export default function UserList({ userData, listMode, onDeleteUser }) {
+export default function UserList({
+  userData,
+  listMode,
+  onDeleteUser,
+  onLogOut,
+}) {
   return (
     <>
       <li className=" bg-white flex justify-between items-center flex-row p-2 rounded-lg shadow-xl relative my-5">
@@ -26,7 +31,10 @@ export default function UserList({ userData, listMode, onDeleteUser }) {
           </div>
         </div>
         {listMode === "activeUsers" ? (
-          <button className="p-2 bg-lime-500 rounded-full text-sm text-black active:scale-[95%] transition-all ease-in duration-100 cursor-pointer ">
+          <button
+            onClick={() => onLogOut(userData.userId)}
+            className="p-2 bg-lime-500 rounded-full text-sm text-black active:scale-[95%] transition-all ease-in duration-100 cursor-pointer "
+          >
             Logout
           </button>
         ) : (
