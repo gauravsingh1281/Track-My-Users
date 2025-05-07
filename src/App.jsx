@@ -31,7 +31,18 @@ export default function App() {
   const activeUsers = userData.filter((user) => user.loginStatus === true);
   const handleRegister = (e) => {
     e.preventDefault();
-    if (!fullName || !email || !password || !image) return;
+    if (!fullName || !email || !password || !image) {
+      const missingFields = [];
+      if (!fullName) missingFields.push("Full Name");
+      if (!email) missingFields.push("Email");
+      if (!password) missingFields.push("Password");
+      if (!image) missingFields.push("Image");
+
+      toast.error(
+        `Please fill the following fields: ${missingFields.join(", ")}`
+      );
+      return;
+    }
     const id = crypto.randomUUID();
     setUserData((prevUserData) => [
       ...prevUserData,
