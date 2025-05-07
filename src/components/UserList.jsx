@@ -1,6 +1,6 @@
 import { formatLoginTime, formatJoinedDate } from "../utils/formatDateTime";
 
-export default function UserList({ userData, listMode }) {
+export default function UserList({ userData, listMode, onDeleteUser }) {
   return (
     <>
       <li className=" bg-white flex justify-between items-center flex-row p-2 rounded-lg shadow-xl relative my-5">
@@ -30,7 +30,10 @@ export default function UserList({ userData, listMode }) {
             Logout
           </button>
         ) : (
-          <button className="p-2 bg-red-500 rounded-full text-sm text-white active:scale-[95%] transition-all ease-in duration-100 cursor-pointer ">
+          <button
+            onClick={() => onDeleteUser(userData.userId)}
+            className="p-2 bg-red-500 rounded-full text-sm text-white active:scale-[95%] transition-all ease-in duration-100 cursor-pointer "
+          >
             Delete
           </button>
         )}

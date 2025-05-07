@@ -24,6 +24,7 @@ export default function App() {
   const [toggleForm, setToggleForm] = useState(true);
   const [showRegisteredUser, setShowRegisteredUser] = useState(false);
   const [showActiveUser, setShowActiveUser] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
   const activeUsers = userData.filter((user) => user.loginStatus === true);
   const handleRegister = (e) => {
     e.preventDefault();
@@ -69,14 +70,21 @@ export default function App() {
     } else {
       console.log("❌ No user found with these credentials");
     }
+
     // reset login data
     setUserEmail("");
     setUserPassword("");
   };
 
+  // User delete handler
+  const handleDeleteUser = (userId) => {
+    setUserData((prevUserData) =>
+      prevUserData.filter((user) => user.userId !== userId)
+    );
+  };
   return (
     <>
-      <main className="w-full min-h-screen flex justify-center items-center flex-col p-10 ">
+      <main className="w-full min-h-screen flex justify-center items-center flex-col px-10 py-4 ">
         <Header />
         {/* Action Button */}
         <ActionBtn
@@ -124,12 +132,17 @@ export default function App() {
               userData={userData}
               showCard={showRegisteredUser}
               listMode={"registeredUsers"}
+              selectedUser={selectedUser}
+              onSetSelectedUser={selectedUser}
+              onDeleteUser={handleDeleteUser}
             />
             <UserListContainer
               listHeading={"Active users"}
               userData={activeUsers}
               showCard={showActiveUser}
               listMode={"activeUsers"}
+              selectedUser={selectedUser}
+              onSetSelectedUser={selectedUser}
             />
           </div>
         </div>
