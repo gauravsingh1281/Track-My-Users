@@ -112,7 +112,7 @@ export default function App() {
     setUserData((prevUserData) =>
       prevUserData.filter((user) => user.userId !== userId)
     );
-    toast.error("User deleted successfully.");
+    toast.success("User deleted successfully.");
   };
 
   //logout handler
