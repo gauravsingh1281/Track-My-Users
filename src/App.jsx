@@ -15,7 +15,7 @@ export default function App() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState("https://i.pravatar.cc/50");
+  const [image, setImage] = useState("https://i.pravatar.cc/950");
 
   //User login State
   const [userEmail, setUserEmail] = useState("");

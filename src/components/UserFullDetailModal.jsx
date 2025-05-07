@@ -32,7 +32,7 @@ export default function UserFullDetailModal({ selectedUser, onClose }) {
           <img
             src={selectedUser.userImage}
             alt={selectedUser.userFullName}
-            className="w-28 h-28 object-cover rounded-full border-2 border-gray-300"
+            className="w-32 h-32 object-cover object-top rounded-full border-2 border-gray-300"
           />
           <div className="flex justify-center items-center gap-1">
             <h2 className="text-xl font-semibold">

@@ -13,13 +13,12 @@ export default function UserList({
   return (
     <>
       <li className=" bg-white flex justify-between items-center flex-row p-2 rounded-lg shadow-xl relative my-5 gap-1">
-        <div className="w-20  overflow-hidden rounded-full">
-          <img
-            src={userData.userImage}
-            alt={`${userData.userFullName}-image`}
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <img
+          src={userData.userImage}
+          alt={`${userData.userFullName}-image`}
+          className="w-16 h-16 object-cover rounded-full object-top"
+        />
+
         {userData.loginStatus && (
           <div className="bg-lime-600 w-3 h-3 rounded-full absolute bottom-[11px] left-[52px] shadow-2xl"></div>
         )}
