@@ -31,6 +31,7 @@ export default function App() {
   const activeUsers = userData.filter((user) => user.loginStatus === true);
   const handleRegister = (e) => {
     e.preventDefault();
+    // input field validation
     if (!fullName || !email || !password || !image) {
       const missingFields = [];
       if (!fullName) missingFields.push("Full Name");
@@ -66,6 +67,16 @@ export default function App() {
   };
   const handleLogin = (e) => {
     e.preventDefault();
+    // input field validation
+    if (!userEmail || !userPassword) {
+      const missingFields = [];
+      if (!userEmail) missingFields.push("Email");
+      if (!userPassword) missingFields.push("Password");
+      toast.error(
+        `Please fill the following fields: ${missingFields.join(", ")}`
+      );
+      return;
+    }
     const foundUser = userData.find(
       (user) =>
         user.userEmail === userEmail && user.userPassword === userPassword
