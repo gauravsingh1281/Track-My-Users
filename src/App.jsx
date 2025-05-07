@@ -40,7 +40,7 @@ export default function App() {
       if (!image) missingFields.push("Image");
 
       toast.error(
-        `Please fill the following fields: ${missingFields.join(", ")}`
+        `Please fill the following fields: ${missingFields.join(", ")}.`
       );
       return;
     }
@@ -73,7 +73,7 @@ export default function App() {
       if (!userEmail) missingFields.push("Email");
       if (!userPassword) missingFields.push("Password");
       toast.error(
-        `Please fill the following fields: ${missingFields.join(", ")}`
+        `Please fill the following fields: ${missingFields.join(", ")}.`
       );
       return;
     }
