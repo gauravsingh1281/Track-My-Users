@@ -1,5 +1,4 @@
-import { formatLoginTime, formatJoinedDate } from "../utils/formatDateTime";
-import { CiMail, CiCalendarDate } from "react-icons/ci";
+import { CiMail } from "react-icons/ci";
 import { MdDelete, MdLogout } from "react-icons/md";
 import { FiEye } from "react-icons/fi";
 export default function UserList({
@@ -25,18 +24,10 @@ export default function UserList({
         )}
         <div className="flex flex-col justify-center items-start w-full px-2 gap-1">
           <h3>{userData.userFullName}</h3>
-          {/* <div className="flex justify-between items-center w-full "> */}
-          {/* <p className="flex justify-center items-center flex-row gap-1">
-              <CiCalendarDate />
-              {listMode === "activeUsers"
-                ? `Last login : ${formatLoginTime(userData.loginTime)}`
-                : `Joined ${formatJoinedDate(userData.joinedOn)}`}
-            </p> */}
           <p className="flex justify-center items-center flex-row gap-1 text-sm text-gray-500">
             <CiMail />
             {userData.userEmail}
           </p>
-          {/* </div> */}
         </div>
         <div className="flex justify-center items-center gap-2">
           <button
