@@ -41,7 +41,7 @@ export default function login({
 
             <button
               type="submit"
-              className="w-full bg-[#2C444E] my-3 text-white py-2 rounded-lg cursor-pointer active:scale-[90%]  transition-all ease-in duration-100"
+              className="w-full bg-[#2C444E] my-3 text-[#FFC801] font-bold uppercase py-2 rounded-lg cursor-pointer active:scale-[90%]  transition-all ease-in duration-100"
             >
               Log In
             </button>
