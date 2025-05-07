@@ -1,3 +1,4 @@
+import { Tooltip } from "react-tooltip";
 import { CiMail } from "react-icons/ci";
 import { MdDelete, MdLogout } from "react-icons/md";
 import { FiEye } from "react-icons/fi";
@@ -31,13 +32,20 @@ export default function UserList({
         </div>
         <div className="flex justify-center items-center gap-2">
           <button
+            data-tooltip-id="view-fulldetails-btn"
+            data-tooltip-content="View full details"
+            data-tooltip-place="bottom"
             onClick={() => onSetSelectedUser(userData)}
             className="p-2 rounded-full  hover:scale-[90%] hover:bg-[#FFC801]  transition-all ease-in duration-100 cursor-pointer "
           >
             <FiEye className=" text-black font-extrabold text-xl" />
           </button>
+
           {listMode === "activeUsers" ? (
             <button
+              data-tooltip-id="logout-btn"
+              data-tooltip-content="Logout"
+              data-tooltip-place="bottom"
               onClick={() => onLogOut(userData.userId)}
               className="p-2 rounded-full  hover:scale-[90%] hover:bg-[#FFC801]  transition-all ease-in duration-100 cursor-pointer "
             >
@@ -45,6 +53,9 @@ export default function UserList({
             </button>
           ) : (
             <button
+              data-tooltip-id="delete-btn"
+              data-tooltip-content="Delete"
+              data-tooltip-place="bottom"
               onClick={() => onDeleteUser(userData.userId)}
               className="p-2 rounded-full  hover:scale-[90%] hover:bg-[#fceebf]   transition-all ease-in duration-100 cursor-pointer "
             >
@@ -53,6 +64,10 @@ export default function UserList({
           )}
         </div>
       </li>
+      {/* Tooltip */}
+      <Tooltip id="view-fulldetails-btn" />
+      <Tooltip id="logout-btn" />
+      <Tooltip id="delete-btn" />
     </>
   );
 }
