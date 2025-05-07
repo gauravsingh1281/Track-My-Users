@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -81,6 +83,7 @@ export default function App() {
     setUserData((prevUserData) =>
       prevUserData.filter((user) => user.userId !== userId)
     );
+    toast.error("User deleted successfully ❌");
   };
 
   //logout handler
@@ -92,6 +95,7 @@ export default function App() {
           : userDetails
       )
     );
+    toast.success("User logged out successfully");
   };
   return (
     <>
@@ -160,6 +164,7 @@ export default function App() {
             />
           </div>
         </div>
+        <ToastContainer position="top-right" autoClose={3000} />
       </main>
     </>
   );
