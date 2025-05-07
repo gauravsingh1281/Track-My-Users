@@ -10,6 +10,7 @@ export const initialUsers = [
     loginStatus: true,
     joinedOn: currentDate(),
     loginTime: currentDateAndTime(),
+    loginHistory: ["1 May 2025, 10:05 AM", "7 May 2025, 09:15 AM"],
   },
   {
     userId: 2,

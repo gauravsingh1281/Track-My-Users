@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import ActionBtn from "./components/ActionBtn";
 import UserListContainer from "./components/UserListContainer";
+import UserFullDetailModal from "./components/UserFullDetailModal";
 import { initialUsers } from "./data/initialUsers";
 import { currentDateAndTime, currentDate } from "./utils/dateTime";
 
@@ -43,6 +44,7 @@ export default function App() {
         loginStatus: false,
         joinedOn: currentDate(),
         loginTime: null,
+        loginHistory: [],
       },
     ]);
 
@@ -57,13 +59,15 @@ export default function App() {
         user.userEmail === userEmail && user.userPassword === userPassword
     );
     if (foundUser) {
+      const timeStamp = currentDateAndTime();
       setUserData((prevUserData) =>
         prevUserData.map((user) =>
           user.userEmail === userEmail
             ? {
                 ...user,
                 loginStatus: true,
-                loginTime: currentDateAndTime(),
+                loginTime: timeStamp,
+                loginHistory: [...(user.loginHistory || []), timeStamp],
               }
             : user
         )
@@ -83,7 +87,7 @@ export default function App() {
     setUserData((prevUserData) =>
       prevUserData.filter((user) => user.userId !== userId)
     );
-    toast.error("User deleted successfully ❌");
+    toast.error("User deleted successfully.");
   };
 
   //logout handler
@@ -95,8 +99,10 @@ export default function App() {
           : userDetails
       )
     );
-    toast.success("User logged out successfully");
+    toast.success("User logged out successfully.");
   };
+
+  console.log(selectedUser);
   return (
     <>
       <main className="w-full min-h-screen flex justify-center items-center flex-col px-10 py-4 ">
@@ -149,7 +155,7 @@ export default function App() {
               showCard={showRegisteredUser}
               listMode={"registeredUsers"}
               selectedUser={selectedUser}
-              onSetSelectedUser={selectedUser}
+              onSetSelectedUser={setSelectedUser}
               onDeleteUser={handleDeleteUser}
             />
             {/*  Active users*/}
@@ -159,10 +165,14 @@ export default function App() {
               showCard={showActiveUser}
               listMode={"activeUsers"}
               selectedUser={selectedUser}
-              onSetSelectedUser={selectedUser}
+              onSetSelectedUser={setSelectedUser}
               onLogOut={handleLogoutUser}
             />
           </div>
+          <UserFullDetailModal
+            selectedUser={selectedUser}
+            onClose={() => setSelectedUser(null)}
+          />
         </div>
         <ToastContainer position="top-right" autoClose={3000} />
       </main>

@@ -3,6 +3,8 @@ import { formatLoginTime, formatJoinedDate } from "../utils/formatDateTime";
 export default function UserList({
   userData,
   listMode,
+  selectedUser,
+  onSetSelectedUser,
   onDeleteUser,
   onLogOut,
 }) {
@@ -17,7 +19,7 @@ export default function UserList({
           />
         </div>
         {userData.loginStatus && (
-          <div className="bg-lime-600 w-3 h-3 rounded-full absolute bottom-[11px] left-[52px]"></div>
+          <div className="bg-lime-600 w-3 h-3 rounded-full absolute bottom-[11px] left-[52px] shadow-2xl"></div>
         )}
         <div className="flex flex-col justify-center items-center w-full px-2 gap-2">
           <h3>{userData.userFullName}</h3>
@@ -30,21 +32,29 @@ export default function UserList({
             <p>{userData.userEmail}</p>
           </div>
         </div>
-        {listMode === "activeUsers" ? (
+        <div className="flex justify-center items-center gap-2">
           <button
-            onClick={() => onLogOut(userData.userId)}
+            onClick={() => onSetSelectedUser(userData)}
             className="p-2 bg-lime-500 rounded-full text-sm text-black active:scale-[95%] transition-all ease-in duration-100 cursor-pointer "
           >
-            Logout
+            View
           </button>
-        ) : (
-          <button
-            onClick={() => onDeleteUser(userData.userId)}
-            className="p-2 bg-red-500 rounded-full text-sm text-white active:scale-[95%] transition-all ease-in duration-100 cursor-pointer "
-          >
-            Delete
-          </button>
-        )}
+          {listMode === "activeUsers" ? (
+            <button
+              onClick={() => onLogOut(userData.userId)}
+              className="p-2 bg-lime-500 rounded-full text-sm text-black active:scale-[95%] transition-all ease-in duration-100 cursor-pointer "
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={() => onDeleteUser(userData.userId)}
+              className="p-2 bg-red-500 rounded-full text-sm text-white active:scale-[95%] transition-all ease-in duration-100 cursor-pointer "
+            >
+              Delete
+            </button>
+          )}
+        </div>
       </li>
     </>
   );
