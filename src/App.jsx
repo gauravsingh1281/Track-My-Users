@@ -44,26 +44,50 @@ export default function App() {
       );
       return;
     }
-    const id = crypto.randomUUID();
-    setUserData((prevUserData) => [
-      ...prevUserData,
-      {
-        userId: id,
-        userFullName: fullName,
-        userEmail: email,
-        userPassword: password,
-        userImage: `${image}?u=${id}`,
-        loginStatus: false,
-        joinedOn: currentDate(),
-        loginTime: null,
-        loginHistory: [],
-      },
-    ]);
 
-    setEmail("");
-    setFullName("");
-    setPassword("");
-    toast.success("User registered successfully.");
+    // Email and Password Validation
+
+    let isValid = true;
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email.");
+      isValid = false;
+    }
+
+    //Password validation
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{6,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must be 6+ chars and include uppercase, lowercase, number, and symbol."
+      );
+      isValid = false;
+    }
+
+    if (isValid) {
+      const id = crypto.randomUUID();
+      setUserData((prevUserData) => [
+        ...prevUserData,
+        {
+          userId: id,
+          userFullName: fullName,
+          userEmail: email,
+          userPassword: password,
+          userImage: `${image}?u=${id}`,
+          loginStatus: false,
+          joinedOn: currentDate(),
+          loginTime: null,
+          loginHistory: [],
+        },
+      ]);
+
+      setEmail("");
+      setFullName("");
+      setPassword("");
+      toast.success("User registered successfully.");
+    }
   };
   const handleLogin = (e) => {
     e.preventDefault();
