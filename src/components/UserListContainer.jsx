@@ -8,6 +8,7 @@ export default function UserListContainer({
   onSetSelectedUser,
   onDeleteUser,
   onLogOut,
+  darkTheme,
 }) {
   return (
     <div className="w-full lg:w-[48%] p-3 ">
@@ -15,7 +16,11 @@ export default function UserListContainer({
         <>
           {userData.length > 0 ? (
             <>
-              <h2 className="text-2xl text-center mb-6 text-[#385A64] font-medium uppercase">
+              <h2
+                className={`text-2xl text-center mb-6 ${
+                  darkTheme ? "text-[#FFC801]" : "text-[#385A64]"
+                } font-medium uppercase`}
+              >
                 {listHeading}
               </h2>
               <div className="w-full">

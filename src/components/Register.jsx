@@ -14,7 +14,7 @@ export default function Register({
 }) {
   return (
     <>
-      <div className="lg:w-[80%] w-full h-full lg:h-[520px] flex flex-col lg:flex-row justify-center items-start shadow-xl rounded-2xl overflow-hidden">
+      <div className="lg:w-[80%] w-full h-full lg:h-[520px] flex flex-col lg:flex-row justify-center items-start shadow-xl rounded-2xl overflow-hidden ">
         <img
           className="h-full w-full lg:w-[60%] object-cover"
           src={signupIllustration}

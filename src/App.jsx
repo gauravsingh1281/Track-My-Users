@@ -28,6 +28,8 @@ export default function App() {
   const [showRegisteredUser, setShowRegisteredUser] = useState(false);
   const [showActiveUser, setShowActiveUser] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [showMobileNav, setShowMobileNav] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(false);
   const activeUsers = userData.filter((user) => user.loginStatus === true);
   const handleRegister = (e) => {
     e.preventDefault();
@@ -154,10 +156,22 @@ export default function App() {
   console.log(selectedUser);
   return (
     <>
-      <main className="w-full min-h-screen flex justify-center items-center flex-col px-4 md:px-8 lg:px-10 py-4 ">
-        <Header />
+      <main
+        className={`w-full ${
+          darkTheme ? "bg-[#2C444E]" : "bg-white"
+        } min-h-screen flex justify-center items-center flex-col px-4 md:px-8 lg:px-10 py-4 `}
+      >
+        <Header
+          darkTheme={darkTheme}
+          onSetDarkTheme={setDarkTheme}
+          showMobileNav={showMobileNav}
+          onSetShowMobileNav={setShowMobileNav}
+        />
         {/* Action Button */}
+
         <ActionBtn
+          darkTheme={darkTheme}
+          showMobileNav={showMobileNav}
           showActiveUser={showActiveUser}
           onSetShowActiveUser={setShowActiveUser}
           showRegisteredUser={showRegisteredUser}
@@ -207,6 +221,7 @@ export default function App() {
               selectedUser={selectedUser}
               onSetSelectedUser={setSelectedUser}
               onDeleteUser={handleDeleteUser}
+              darkTheme={darkTheme}
             />
 
             {/*  Active users*/}
@@ -218,6 +233,7 @@ export default function App() {
               selectedUser={selectedUser}
               onSetSelectedUser={setSelectedUser}
               onLogOut={handleLogoutUser}
+              darkTheme={darkTheme}
             />
           </div>
           <UserFullDetailModal
