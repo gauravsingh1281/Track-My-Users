@@ -12,24 +12,25 @@ export default function UserList({
 }) {
   return (
     <>
-      <li className=" bg-white flex justify-between items-center flex-row p-2 rounded-lg shadow-xl relative my-5 gap-1">
-        <img
-          src={userData.userImage}
-          alt={`${userData.userFullName}-image`}
-          className="w-16 h-16 object-cover rounded-full object-top"
-        />
-
-        {userData.loginStatus && (
-          <div className="bg-lime-600 w-3 h-3 rounded-full absolute bottom-[11px] left-[52px] shadow-2xl"></div>
-        )}
-        <div className="flex flex-col justify-center items-start w-full px-2 gap-1">
-          <h3>{userData.userFullName}</h3>
+      <li className=" bg-white flex justify-between items-center flex-col md:flex-row lg:flex-row p-2 rounded-lg shadow-xl relative my-5 gap-1">
+        <div className=" w-22 h-22 md:h-18 lg:h-16 relative rounded-full  mt-2 ">
+          <img
+            src={userData.userImage}
+            alt={`${userData.userFullName}-image`}
+            className="w-full h-full object-cover  rounded-full  object-top"
+          />
+          {userData.loginStatus && (
+            <div className="bg-lime-600 w-[14px] h-[14px] md:w-3 md:h-3 lg:w-3 lg:h-3 rounded-full absolute top-[75px] left-[60px] md:top-[57px] md:left-[54px]  lg:top-[50px] lg:left-[48px]  shadow-2xl"></div>
+          )}
+        </div>
+        <div className="flex flex-col justify-center item-center md:items-start lg:items-start md:w-full lg:w-full px-2 gap-1">
+          <h3 className="text-center">{userData.userFullName}</h3>
           <p className="flex justify-center items-center flex-row gap-1 text-sm text-gray-500">
             <CiMail />
             {userData.userEmail}
           </p>
         </div>
-        <div className="flex justify-center items-center gap-2">
+        <div className="flex justify-center items-center gap-2 lg:mt-0 mt-2">
           <button
             data-tooltip-id="view-fulldetails-btn"
             data-tooltip-content="View full details"

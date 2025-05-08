@@ -154,7 +154,7 @@ export default function App() {
   console.log(selectedUser);
   return (
     <>
-      <main className="w-full min-h-screen flex justify-center items-center flex-col px-10 py-4 ">
+      <main className="w-full min-h-screen flex justify-center items-center flex-col px-4 md:px-8 lg:px-10 py-4 ">
         <Header />
         {/* Action Button */}
         <ActionBtn

@@ -10,7 +10,7 @@ export default function UserListContainer({
   onLogOut,
 }) {
   return (
-    <div className="w-full md:w-[48%] lg:w-[48%] p-3">
+    <div className="w-full lg:w-[48%] p-3 ">
       {showCard && (
         <>
           {userData.length > 0 ? (

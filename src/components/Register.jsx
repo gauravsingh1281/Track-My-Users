@@ -14,13 +14,13 @@ export default function Register({
 }) {
   return (
     <>
-      <div className="w-[80%] h-[520px] flex flex-row justify-center items-start shadow-xl rounded-2xl overflow-hidden">
+      <div className="lg:w-[80%] w-full h-full lg:h-[520px] flex flex-col lg:flex-row justify-center items-start shadow-xl rounded-2xl overflow-hidden">
         <img
-          className="h-full w-[60%] object-cover"
+          className="h-full w-full lg:w-[60%] object-cover"
           src={signupIllustration}
           alt="signup-illustration"
         />
-        <div className="w-[40%] h-full bg-white px-6 py-4 flex flex-col justify-center items-center gap-3 ">
+        <div className="w-full lg:w-[40%] h-full bg-white px-6 py-4 flex flex-col justify-center items-center gap-3 ">
           <h2 className="text-2xl  text-[#2C444E]">Let's get started!</h2>
           <form className="w-full" onSubmit={onRegisterFormSubmit}>
             <label className="block text-base ">Full name :</label>
