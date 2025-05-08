@@ -50,7 +50,7 @@ const formatJoinedDate = (dateStr) => {
   const month = joinedDate.toLocaleString("en-IN", { month: "short" });
   const year = joinedDate.getFullYear();
 
-  return `Joined on ${day} ${month} ${year}`;
+  return `${day} ${month} ${year}`;
 };
 
 export { formatLoginTime, formatJoinedDate };

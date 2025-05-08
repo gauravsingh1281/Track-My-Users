@@ -8,12 +8,12 @@ export const initialUsers = [
     userPassword: "demo",
     userImage: "https://avatars.githubusercontent.com/u/85905403?v=4",
     loginStatus: true,
-    joinedOn: "1 May 2025",
+    joinedOn: "25 April 2025, 12:00 PM",
     loginTime: currentDateAndTime(),
     loginHistory: [
-      "1 May 2025, 10:05 AM",
+      "7 May 2025, 10:05 AM",
       "3 May 2025, 6:50 PM",
-      "7 May 2025, 09:15 AM",
+      "1 May 2025, 09:15 AM",
       "25 April 2025, 12:00 PM",
     ],
   },
@@ -27,7 +27,7 @@ export const initialUsers = [
     loginStatus: false,
     joinedOn: currentDate(),
     loginTime: null,
-    loginHistory: ["4 May 2025, 11:45 AM"],
+    loginHistory: [],
   },
   {
     userId: 3,
@@ -37,12 +37,12 @@ export const initialUsers = [
     userImage:
       "https://i.pinimg.com/736x/05/4d/d7/054dd706d299c405071d81f6ae3cf494.jpg",
     loginStatus: true,
-    joinedOn: "5 May 2025",
+    joinedOn: "4 May 2025",
     loginTime: "7 May 2025, 09:15 AM",
     loginHistory: [
-      "1 May 2025, 08:30 AM",
-      "3 May 2025, 10:00 AM",
-      "7 May 2025, 09:15 AM",
+      "7 May 2025, 08:30 AM",
+      "5 May 2025, 10:00 AM",
+      "4 May 2025, 09:15 AM",
     ],
   },
 ];
