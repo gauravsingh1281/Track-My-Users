@@ -153,7 +153,6 @@ export default function App() {
     toast.success("User logged out successfully.");
   };
 
-  console.log(selectedUser);
   return (
     <>
       <main
@@ -172,6 +171,7 @@ export default function App() {
         <ActionBtn
           darkTheme={darkTheme}
           showMobileNav={showMobileNav}
+          onSetShowMobileNav={setShowMobileNav}
           showActiveUser={showActiveUser}
           onSetShowActiveUser={setShowActiveUser}
           showRegisteredUser={showRegisteredUser}
